@@ -28,7 +28,7 @@ HTML tags". It converts the ">".
 - Gor Martsen (http://github.com/Gormartsen)
 
 ##Credits
-- [prasedown](https://github.com/erusev/parsedown) that do actuall Markdown processing created by [Emanuil Rusev](https://github.com/erusev)
+- [prasedown](https://github.com/erusev/parsedown) that do Markdown processing created by [Emanuil Rusev](https://github.com/erusev)
 
 
 ##License
