@@ -1,0 +1,5 @@
+name = Parsedown filter
+description = Filter based on http://parsedown.org markdown parser with extra add-on
+package = "Input filters"
+backdrop = 1.x
+type = module

@@ -1,0 +1,136 @@
+<?php
+
+/**
+ * @file
+ * Provides a Markdown Extra input filter.
+ */
+
+/**
+ * Implements hook_filter_info().
+ */
+function parsedown_filter_filter_info() {
+  $filters['filter_parsedown_filter'] = array(
+    'title' => t('Parsedown'),
+    'description' => t('Allows content to be submitted using Markdown , a simple plain-text syntax that is filtered into valid XHTML.'),
+    'process callback' => '_filter_parsedown_filter',
+    'settings callback' => '_filter_parsedown_settings',
+    'tips callback' => '_filter_parsedown_filter_tips',
+  );
+
+  return $filters;
+}
+
+/**
+ * Returns the parsedown_filter input filter tips.
+ */
+function _filter_parsedown_filter_tips($format, $long = FALSE) {
+  if ($long) {
+    return t('Quick Tips:<ul>
+      <li>Two or more spaces at a line\'s end = Line break</li>
+      <li>Double returns = Paragraph</li>
+      <li>*Single asterisks* or _single underscores_ = <em>Emphasis</em></li>
+      <li>**Double** or __double__ = <strong>Strong</strong></li>
+      <li>This is [a link](http://the.link.example.com "The optional title text")</li>
+      <li>This is a image ![alt](http://the.link.example.com/example.png)</li>
+      </ul>');
+  }
+  else {
+    return t('You can use <a href="@filter_tips">Markdown syntax</a> to format and style the text.');
+  }
+}
+
+/**
+ * Implements callback_filter_settings().
+ *
+ * Filter settings callback for the Markdown content filter.
+ */
+function _filter_parsedown_settings($form, &$form_state, $filter, $format) {
+  $settings['filter_parsedown_extra'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Markdown Extra'),
+    '#default_value' => $filter->settings['filter_parsedown_extra'],
+  );
+  return $settings;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function parsedown_filter_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'parsedown_filter_help':
+      $block['title'] = t('Markdown filter tips');
+      $block['content'] = _parsedown_filter_help_block();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function parsedown_filter_block_info() {
+  $blocks = array();
+  $blocks['parsedown_filter_help'] = array(
+    'info' => t('Markdown filter tips'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Provides content for the parsedown_filter help block.
+ */
+function _parsedown_filter_help_block() {
+  return '<pre>' . t("
+## Header 2 ##
+### Header 3 ###
+#### Header 4 ####
+##### Header 5 #####
+(Hashes on right are optional)
+
+Link [Backdrop CMS](https://backdropcms.org/)
+
+Inline markup like _italics_,
+ **bold**, and `code()`.
+
+> Blockquote. Like email replies
+>> And, they can be nested
+
+* Bullet lists are easy too
+- Another one
++ Another one
+
+1. A numbered list
+2. Which is numbered
+3. With periods and a space
+
+And now some code:
+```php
+phpinfo();
+
+```") . '</pre>';
+}
+
+/**
+ * Filter process callback.
+ */
+function _filter_parsedown_filter($text, $format) {
+  if (!empty($text)) {
+    module_load_include('php', 'parsedown_filter', 'parsedown/Parsedown');
+    
+    if($filter->settings['filter_parsedown_extra']) {
+      module_load_include('php', 'parsedown_filter', 'parsedown/ParsedownExtra');
+      $Extra = new ParsedownExtra();
+      $text = $Extra->text($text);
+    }
+    else{
+      $Parsedown = new Parsedown();
+      $text = $Parsedown->text($text);
+    }
+  }
+
+  return $text;
+}
