@@ -48,7 +48,7 @@ function _filter_parsedown_settings($form, &$form_state, $filter, $format) {
   $settings['filter_parsedown_extra'] = array(
     '#type' => 'checkbox',
     '#title' => t('Enable Markdown Extra'),
-    '#default_value' => $filter->settings['filter_parsedown_extra'],
+    '#default_value' => isset($filter->settings['filter_parsedown_extra']) ? $filter->settings['filter_parsedown_extra'] : FALSE,
   );
   return $settings;
 }
