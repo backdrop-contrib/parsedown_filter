@@ -115,9 +115,11 @@ phpinfo();
 }
 
 /**
- * Filter process callback.
+ * Implements callback_filter_process().
+ *
+ * Provides filtering of input into accepted HTML based on Markdown syntax.
  */
-function _filter_parsedown_filter($text, $format) {
+function _filter_parsedown_filter($text, $filter) {
   if (!empty($text)) {
     module_load_include('php', 'parsedown_filter', 'parsedown/Parsedown');
     
