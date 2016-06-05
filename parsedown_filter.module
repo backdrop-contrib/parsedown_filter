@@ -21,6 +21,17 @@ function parsedown_filter_filter_info() {
 }
 
 /**
+ * Implements hook_autoload_info().
+ */
+function parsedown_filter_autoload_info() {
+  return array(
+    'Parsedown' => 'parsedown/Parsedown.php',
+    'ParsedownExtra' => 'parsedown/ParsedownExtra.php',
+  );
+}
+
+
+/**
  * Returns the parsedown_filter input filter tips.
  */
 function _filter_parsedown_filter_tips($format, $long = FALSE) {
@@ -121,10 +132,7 @@ phpinfo();
  */
 function _filter_parsedown_filter($text, $filter) {
   if (!empty($text)) {
-    module_load_include('php', 'parsedown_filter', 'parsedown/Parsedown');
-    
     if($filter->settings['filter_parsedown_extra']) {
-      module_load_include('php', 'parsedown_filter', 'parsedown/ParsedownExtra');
       $Extra = new ParsedownExtra();
       $text = $Extra->text($text);
     }
