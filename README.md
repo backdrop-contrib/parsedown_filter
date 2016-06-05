@@ -21,18 +21,17 @@ text is preserved, run it after the Markdown Extra filter. Note that
 blockquoting with Parsedown Filter doesn't work when run after "Limit allowed
 HTML tags". It converts the ">".
 
-Current Maintainer
-------------------
+##Installation
+- Install this theme using the official Backdrop CMS instructions at https://backdropcms.org/guide/themes
 
+##Current Maintainer
 - Gor Martsen (http://github.com/Gormartsen)
 
-Credits
--------
+##Credits
 - [prasedown](https://github.com/erusev/parsedown) that do actuall Markdown processing created by [Emanuil Rusev](https://github.com/erusev)
 
 
-License
--------
+##License
 
 The Backdrop module code is GPL v2 software, but the Parsedown library is distributed under separate licence MIT.
 See more details on library page (https://github.com/erusev/parsedown)
