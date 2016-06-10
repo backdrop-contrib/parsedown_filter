@@ -22,7 +22,7 @@ blockquoting with Parsedown Filter doesn't work when run after "Limit allowed
 HTML tags". It converts the ">".
 
 ##Installation
-- Install this theme using the official Backdrop CMS instructions at https://backdropcms.org/guide/themes
+- Install this module using the official Backdrop CMS instructions at https://backdropcms.org/guide/modules
 
 ##Current Maintainer
 - Gor Martsen (http://github.com/Gormartsen)
