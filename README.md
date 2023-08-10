@@ -1,13 +1,13 @@
 # Parsedown filter
 
 Provides basic and optionally extra markdown filter integration for Backdrop
-input formats. Filter based on https://parsedown.org markdown parser with
+input formats. Filter based on [Parsedown](https://parsedown.org) markdown parser with
 Markdown Extra support.
 
-**Important note about running Markdown with other input filters**
+**Important note about running Parsedown filter with other input filters**
 
 Parsedown filter may conflict with other input filters, depending on the order
-in which filters are configured to apply. If using Parsedown Filter produces
+in which filters are configured to apply. If using Parsedown filter produces
 unexpected markup when configured with other filters, experimenting with the
 the order of those filters will likely resolve the issue.
 
@@ -19,7 +19,7 @@ configured to be allowed by it.
 
 If you, on the other hand, want to make sure that all converted Markdown text
 is preserved, run it after the Markdown Extra filter. Note that
-blockquoting with Parsedown Filter doesn't work when run after "Limit allowed
+blockquoting with Parsedown filter doesn't work when run after "Limit allowed
 HTML tags". It converts the ">".
 
 ## Installation
@@ -40,6 +40,7 @@ https://backdropcms.org/guide/modules
 
 ## License
 
-The Backdrop module code is GPL v2 software, but the Parsedown library is
-distributed under separate licence: MIT.
-See more details on the library page (https://github.com/erusev/parsedown).
+The Backdrop module code is GPL v2 software, but the Parsedown and Parsedown
+Extra libraries are distributed under separate licence (MIT). See more details
+on the library pages for [Parsedown](https://github.com/erusev/parsedown) and
+[Parsedown Extra](https://github.com/erusev/parsedown-extra).
