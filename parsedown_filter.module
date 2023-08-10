@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Provides a Markdown Extra input filter.
@@ -25,8 +24,8 @@ function parsedown_filter_filter_info() {
  */
 function parsedown_filter_autoload_info() {
   return array(
-    'Parsedown' => 'parsedown/Parsedown.php',
-    'ParsedownExtra' => 'parsedown/ParsedownExtra.php',
+    'Parsedown' => 'libraries/Parsedown/Parsedown.php',
+    'ParsedownExtra' => 'libraries/ParsedownExtra/ParsedownExtra.php',
   );
 }
 
@@ -132,11 +131,11 @@ phpinfo();
  */
 function _filter_parsedown_filter($text, $filter) {
   if (!empty($text)) {
-    if($filter->settings['filter_parsedown_extra']) {
+    if ($filter->settings['filter_parsedown_extra']) {
       $Extra = new ParsedownExtra();
       $text = $Extra->text($text);
     }
-    else{
+    else {
       $Parsedown = new Parsedown();
       $text = $Parsedown->text($text);
     }
