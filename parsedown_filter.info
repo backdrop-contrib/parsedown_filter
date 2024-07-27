@@ -3,6 +3,9 @@ description = Filter based on Parsedown Markdown parser with extra add-on
 backdrop = 1.x
 type = module
 
+maintainers[yorkshire-pudding] = Martin Price
+maintainers_wanted = TRUE
+
 package = Input filters
 tags[] = Content
 tags[] = Filters
